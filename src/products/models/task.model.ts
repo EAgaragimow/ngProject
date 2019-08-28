@@ -2,6 +2,6 @@ export interface Task {
   id: number;
   name: string;
   comments: string;
-  important: boolean;
+  important: number;
   time: number;
 }

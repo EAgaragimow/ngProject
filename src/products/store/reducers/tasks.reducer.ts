@@ -8,7 +8,13 @@ export interface TaskState {
 }
 
 export const initialState: TaskState = {
-  data: [],
+  data: [{
+    id: 1,
+    name: '',
+    comments: '',
+    important: 1,
+    time: 10,
+  }],
   loaded: false,
   loading: false
 };
