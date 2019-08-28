@@ -1,5 +1,5 @@
 import * as fromTasks from '../actions/tasks.action';
-import { Task } from 'src/product/models/task.model';
+import { Task } from 'src/products/models/task.model';
 
 export interface TaskState {
   data: Task[];
