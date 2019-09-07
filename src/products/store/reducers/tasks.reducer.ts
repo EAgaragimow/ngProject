@@ -27,12 +27,13 @@ export function reducer(
     }
 
     case fromTasks.LOAD_TASKS_SUCCESS: {
-      console.log(action.payload);
+      const data = action.payload;
 
       return {
         ...state,
         loading: false,
         loaded: true,
+        data
       };
     }
 
