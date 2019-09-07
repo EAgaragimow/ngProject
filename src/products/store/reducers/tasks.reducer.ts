@@ -8,13 +8,7 @@ export interface TaskState {
 }
 
 export const initialState: TaskState = {
-  data: [{
-    id: 1,
-    name: 'test',
-    time: 20,
-    important: 1,
-    comment: 'asd'
-  }],
+  data: [],
   loaded: false,
   loading: false
 };
@@ -33,6 +27,8 @@ export function reducer(
     }
 
     case fromTasks.LOAD_TASKS_SUCCESS: {
+      console.log(action.payload);
+
       return {
         ...state,
         loading: false,

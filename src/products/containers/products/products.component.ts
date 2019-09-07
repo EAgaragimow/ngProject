@@ -19,6 +19,7 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit() {
     this.tasks$ = this.store.select(fromStore.getAllTask);
+    this.store.dispatch(new fromStore.LoadTasks());
   }
 
 }

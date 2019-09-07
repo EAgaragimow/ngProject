@@ -4,8 +4,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
-import { reducers } from './store';
+// store entities import
+import { reducers, effects } from './store';
 
 // Components
 // import * as fromComponents from './components';
@@ -21,6 +23,7 @@ import * as fromServices from './services';
   exports: [...fromContainers.containers],
   imports: [
     CommonModule,
+    EffectsModule.forFeature(effects),
     StoreModule.forFeature('products', reducers),
     HttpClientModule,
     ReactiveFormsModule,
