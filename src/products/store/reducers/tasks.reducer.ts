@@ -8,7 +8,13 @@ export interface TaskState {
 }
 
 export const initialState: TaskState = {
-  data: [],
+  data: [{
+    id: 1,
+    name: 'test',
+    time: 20,
+    important: 1,
+    comment: 'asd'
+  }],
   loaded: false,
   loading: false
 };
@@ -46,3 +52,6 @@ export function reducer(
   return state;
 }
 
+export const getTasks = (state: TaskState) => state.data;
+export const getTasksLoading = (state: TaskState) => state.loading;
+export const getTasksLoaded = (state: TaskState) => state.loaded;

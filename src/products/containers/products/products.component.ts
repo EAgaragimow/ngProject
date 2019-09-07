@@ -1,24 +1,24 @@
-import { TasksService } from './../../services/tasks.service';
+import { Observable } from 'rxjs/internal/Observable';
 import { Task } from 'src/products/models/task.model';
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import * as fromStore from '../../store';
 
 @Component({
   selector: 'app-products',
   template: `
-    <app-product-item *ngFor="let task of tasks" [task]="task"></app-product-item>
+    <app-product-item *ngFor="let task of (tasks$ | async)" [task]="task"></app-product-item>
   `,
   styleUrls: ['products.component.scss']
 })
 export class ProductsComponent implements OnInit {
 
-  tasks: Task[];
+  tasks$: Observable<Task[]>;
 
-  constructor(private tasksService: TasksService) { }
+  constructor(private store: Store<fromStore.ProductsState>) { }
 
   ngOnInit() {
-    this.tasksService.getTasks().subscribe((res: Task[]) => {
-      this.tasks = res;
-    });
+    this.tasks$ = this.store.select(fromStore.getAllTask);
   }
 
 }
