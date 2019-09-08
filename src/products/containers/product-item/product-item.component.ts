@@ -3,10 +3,7 @@ import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-product-item',
-  template: `<p>{{ task.name }}</p>
-  <p>{{ task.comment }}</p>
-  <p>{{ task.important }}</p>
-  <p>{{ task.time }}</p>`,
+  templateUrl: './product-item.component.html',
   styleUrls: ['product-item.component.scss']
 })
 export class ProductItemComponent implements OnInit {

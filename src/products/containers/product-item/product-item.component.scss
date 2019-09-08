@@ -1,0 +1,43 @@
+.t-item {
+    & {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #e2e3e5;
+    }
+
+    &.important {
+        &_1 {
+            background: rgba(51, 253, 0, 0.25);
+        }
+
+        &_2 {
+            background: rgba(217, 255, 0, 0.788)
+        }
+
+        &_3 {
+            background: rgba(253, 0, 0, 0.25);
+        }
+    }
+
+    &-name,
+    &-comment,
+    &-time {
+        margin-right: 10px;
+        font-size: 14px;
+        color: #333;
+    }
+
+    &-name {
+    }
+
+    &-comment {
+
+    }
+
+    &-time {
+
+    }
+
+}

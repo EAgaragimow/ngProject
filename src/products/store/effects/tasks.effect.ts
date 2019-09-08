@@ -25,4 +25,18 @@ export class TasksEffects {
                 );
         })
     );
+
+    // @Effect()
+    // addProduct$: Observable<Action> = this.actions$.pipe(
+    //   ofType(productsActions.ADD_PRODUCT_START),
+    //   switchMap((action: productsActions.AddProductStart) => {
+    //     return this.productsService
+    //       .addProduct(action.payload)
+    //       .pipe(
+    //         pluck('product'),
+    //         map((res: Product) => new productsActions.AddProductSuccess(res)),
+    //         catchError((error: Error) => of(new productsActions.AddProductFail(error)))
+    //       );
+    //   })
+    // );
 }

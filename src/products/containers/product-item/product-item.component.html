@@ -1,0 +1,12 @@
+<div 
+    class="t-item" 
+    [ngClass]="{
+        'important_1': task.important == 1,
+        'important_2': task.important == 2,
+        'important_3': task.important == 3
+    }"
+>
+    <h5 class="t-item-name">{{ task.name }}</h5>
+    <p class="t-item-comment">{{ task.comment }}</p>
+    <sup class="t-item-time">{{ task.time }}мин</sup>
+</div>

@@ -7,7 +7,9 @@ import * as fromStore from '../../store';
 @Component({
   selector: 'app-products',
   template: `
-    <app-product-item *ngFor="let task of (tasks$ | async)" [task]="task"></app-product-item>
+    <div class="t-container">
+      <app-product-item *ngFor="let task of (tasks$ | async)" [task]="task"></app-product-item>
+    </div>
   `,
   styleUrls: ['products.component.scss']
 })
@@ -18,7 +20,7 @@ export class ProductsComponent implements OnInit {
   constructor(private store: Store<fromStore.ProductsState>) { }
 
   ngOnInit() {
-    this.tasks$ = this.store.select(fromStore.getAllTask);
+    this.tasks$ = this.store.select(fromStore.getAllTasks);
     this.store.dispatch(new fromStore.LoadTasks());
   }
 

@@ -2,15 +2,17 @@ import * as fromTasks from '../actions/tasks.action';
 import { Task } from 'src/products/models/task.model';
 
 export interface TaskState {
-  data: Task[];
+  entities: {[id: number]: Task};
   loaded: boolean;
   loading: boolean;
+  error: Error;
 }
 
 export const initialState: TaskState = {
-  data: [],
+  entities: {},
   loaded: false,
-  loading: false
+  loading: false,
+  error: null
 };
 
 export function reducer(
@@ -27,13 +29,25 @@ export function reducer(
     }
 
     case fromTasks.LOAD_TASKS_SUCCESS: {
-      const data = action.payload;
+      const tasks = action['payload'];
+
+      const entities = tasks.reduce(
+        (entities: {[id: number]: Task}, task: Task) => {
+          return {
+            ...entities,
+            [task.id]: task
+          };
+        },
+        {
+          ...state.entities
+        }
+      );
 
       return {
         ...state,
         loading: false,
         loaded: true,
-        data
+        entities
       };
     }
 
@@ -44,11 +58,37 @@ export function reducer(
         loaded: false,
       };
     }
+
+    case fromTasks.ADD_TASK_START: {
+      return {
+        ...state,
+        loading: true,
+      };
+    }
+
+    case fromTasks.ADD_TASK_SUCCESS: {
+
+      return {
+        ...state,
+        // products: [...state.products, action['payload']],
+        loading: false,
+        loaded: true,
+      };
+    }
+
+    case fromTasks.ADD_TASK_FAIL: {
+      return {
+        ...state,
+        loading: false,
+        loaded: false,
+        error: action['payload'],
+      };
+    }
   }
 
   return state;
 }
 
-export const getTasks = (state: TaskState) => state.data;
+export const getTasksEntities = (state: TaskState) => state.entities;
 export const getTasksLoading = (state: TaskState) => state.loading;
 export const getTasksLoaded = (state: TaskState) => state.loaded;

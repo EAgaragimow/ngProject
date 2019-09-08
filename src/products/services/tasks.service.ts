@@ -13,4 +13,8 @@ export class TasksService {
             .get<Task[]>('http://localhost:3000/tasks')
             .pipe(catchError((error: any) => Observable.throw(error.json())));
     }
+
+    // addProduct(product: Product): Observable<Product> {
+    //   return this.http.post<Product>(`${environment.api_url}/products`, product);
+    // }
 }
